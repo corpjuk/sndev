@@ -18,9 +18,17 @@ from django.urls import path, include
 from .views import ( 
     home_view,
 )
+from accounts.views import (
+    login_view,
+    logout_view,
+    register_view,
+)
 
 urlpatterns = [
     path('', home_view, name="home"),
     path('admin/', admin.site.urls),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view),
     path('quiz', include('cnatests.urls')),
+    path('register/', register_view, name='register'),
 ]

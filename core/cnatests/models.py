@@ -52,6 +52,9 @@ class Quiz(models.Model):
 
 
 class QuizRequest(models.Model):
+
+    # request should have foreign key to user model, quiz model, and uuid primary key
+
     key = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
