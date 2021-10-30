@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Star Nursing Inc Accounts</h1>
+<p>This is accounts list.html</p>
+<p>hello</p>
+
+
+
+
+<ul>
+  {% comment %}
+
+  object_list is the context in the recipes/views.py
+  This is an important variable to match when displaying the object and data.
+
+  {% endcomment %}
+  
+  {% for x in object_list %}
+    <li><a href='{{ x.get_absolute_url }}'>{{x.email}}</a></li>
+    <li>{{x.username}}</li>
+    <li>{{x.date_joined}}</li>
+
+  {% endfor %} 
+</ul>
+
+{% endblock content %}
