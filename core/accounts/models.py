@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django.urls import reverse
 
 # Create your models here.
 class AccountManager(BaseUserManager):
@@ -44,6 +45,11 @@ class Account(AbstractBaseUser):
     REQUIRED_FIELDS = ['username']
 
     objects = AccountManager()
+
+    def get_absolute_url(self):
+        
+        #return reverse("accounts:list", kwargs={"id": self.id })
+        return reverse("accounts:list")#, kwargs={"id": self.id })
 
     def __str__(self):
         return self.email

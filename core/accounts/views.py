@@ -2,7 +2,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
 
+from .models import Account
+
 # Create your views here.
+def account_view(request):
+    qs = Account.objects.all()
+    #qs = Account.objects.filter(email=request.user)
+    context = {
+        'object_list': qs 
+    }
+    return render(request, "accounts/list.html", context)
+
 def register_view(request):
     form = UserCreationForm(request.POST or None)
     if form.is_valid():
